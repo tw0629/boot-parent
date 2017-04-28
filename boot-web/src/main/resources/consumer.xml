@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="boot-consumer" />
+
+    <!--注册中心-->
+
+    <dubbo:registry address="${dubbo_registry_address}" check="false"/>
+
+
+    <!-- 扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类 (dubbo扫描的注解包，可以使用@Service 注册服务 @Reference 订阅服务)-->
+    <!--<dubbo:annotation package="com.github" />-->
+
+    <dubbo:reference interface="com.github.service.UserService" id ="userService" check="false"/>
+</beans>
