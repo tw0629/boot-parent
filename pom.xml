@@ -25,8 +25,19 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
+		<java-version>1.8</java-version>
+		<org.springframework-version>4.3.0.RELEASE</org.springframework-version>
+		<org.aspectj-version>1.8.9</org.aspectj-version>
+		<org.slf4j-version>1.7.21</org.slf4j-version>
+		<log4j-version>1.2.17</log4j-version>
+		<com.fasterxml.jackson-version>2.7.5</com.fasterxml.jackson-version>
+		<mysql-version>5.1.39</mysql-version>
+		<druid-version>1.0.20</druid-version>
+		<org.mybatis-version>3.2.8</org.mybatis-version>
+		<junit-version>4.12</junit-version>
+		<dubbo-version>2.5.3</dubbo-version>
+		<commons.version>1.2.22.RELEASE</commons.version>
+		<vision.version>3.0.0-SNAPSHOT</vision.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -34,7 +45,7 @@
 			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>dubbo</artifactId>
-				<version>2.4.10</version>
+				<version>${dubbo-version}</version>
 				<exclusions>
 					<exclusion>
 						<artifactId>spring</artifactId>
@@ -64,6 +75,50 @@
 				<artifactId>boot-api</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
+			<!--spring redis-->
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-redis</artifactId>
+				<version>1.6.0.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>redis.clients</groupId>
+				<artifactId>jedis</artifactId>
+				<version>2.7.3</version>
+			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql-version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			<!-- mybatis -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-jdbc</artifactId>
+				<version>1.5.3.RELEASE</version>
+			</dependency>
+
+
+			<!-- 使用数据源 -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>${druid-version}</version>
+			</dependency>
+
+			<!-- mybatis -->
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>3.2.8</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-spring</artifactId>
+				<version>1.2.2</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 	<!--spring boot  -->
@@ -72,7 +127,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
