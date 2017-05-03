@@ -6,5 +6,12 @@
         select * from t_user where username = #{username}
     </select>
 
-
+    <update id="updateUserByUsername" parameterType="UserDo">
+        UPDATE t_user
+        <set>
+            <if test="age!=null"> age = #{age} ,</if>
+            <if test="city!=null">city = #{city},</if>
+        </set>
+        WHERE username = #{username}
+    </update>
 </mapper>

@@ -8,4 +8,6 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface UserMapper {
     UserDo selectUserByUsername(@Param("username") String username);
+
+    int updateUserByUsername(UserDo user);
 }

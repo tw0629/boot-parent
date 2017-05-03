@@ -35,4 +35,11 @@ public class UserController {
         BootDto bootDto = userService.getUserByUsername(username);
         return bootDto;
     }
+    @RequestMapping(value = "updateUserByUsername" ,produces = "application/json;charset=UTF-8",method = RequestMethod.GET)
+    @ResponseBody
+    public BootDto updateUserByUsername(UserDo userDo){
+        BootDto bootDto = userService.updateUserByUsername(userDo);
+        return bootDto;
+    }
+
 }
