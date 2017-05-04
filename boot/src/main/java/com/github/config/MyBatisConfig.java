@@ -51,7 +51,12 @@ public class MyBatisConfig implements EnvironmentAware {
      */
     @Bean
     public SqlSessionFactory sqlSessionFactory(DataSource ds) throws Exception{
+        org.apache.ibatis.session.Configuration config = new org.apache.ibatis.session.Configuration();
+        //开启驼峰规则映射
+        config.setMapUnderscoreToCamelCase(true);
+
         SqlSessionFactoryBean fb = new SqlSessionFactoryBean();
+        fb.setConfiguration(config);
         fb.setDataSource(ds);//指定数据源(这个必须有，否则报错)
         //下边两句仅仅用于*.xml文件，如果整个持久层操作不需要使用到xml文件的话（只用注解就可以搞定），则不加
         fb.setTypeAliasesPackage(env.getProperty("mybatis.typeAliasesPackage"));//指定基包
