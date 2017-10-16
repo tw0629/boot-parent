@@ -1,20 +1,17 @@
 package com.github.config;
 
-import java.util.Properties;
-
-import javax.sql.DataSource;
-
+import com.alibaba.druid.pool.DruidDataSourceFactory;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
-import com.alibaba.druid.pool.DruidDataSourceFactory;
+import javax.sql.DataSource;
+import java.util.Properties;
 
 /**
  * springboot集成mybatis的基本入口
@@ -57,10 +54,13 @@ public class MyBatisConfig implements EnvironmentAware {
 
         SqlSessionFactoryBean fb = new SqlSessionFactoryBean();
         fb.setConfiguration(config);
-        fb.setDataSource(ds);//指定数据源(这个必须有，否则报错)
+        //指定数据源(这个必须有，否则报错)
+        fb.setDataSource(ds);
         //下边两句仅仅用于*.xml文件，如果整个持久层操作不需要使用到xml文件的话（只用注解就可以搞定），则不加
-        fb.setTypeAliasesPackage(env.getProperty("mybatis.typeAliasesPackage"));//指定基包
-        fb.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(env.getProperty("mybatis.mapperLocations")));//指定xml文件位置
+        //指定基包
+        fb.setTypeAliasesPackage(env.getProperty("mybatis.typeAliasesPackage"));
+        //指定xml文件位置
+        fb.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(env.getProperty("mybatis.mapperLocations")));
 
         return fb.getObject();
     }

@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public class BootDto implements Serializable{
     private Boolean isSuccess;
-    private Object Data;
+    private Object data;
     private String msg;
 
     public Boolean getSuccess() {
@@ -19,11 +19,11 @@ public class BootDto implements Serializable{
     }
 
     public Object getData() {
-        return Data;
+        return data;
     }
 
     public void setData(Object data) {
-        Data = data;
+        data = data;
     }
 
     public String getMsg() {

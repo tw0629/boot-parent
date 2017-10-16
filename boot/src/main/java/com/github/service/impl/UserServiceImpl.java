@@ -5,10 +5,8 @@ import com.github.bo.UserBo;
 import com.github.domain.UserDo;
 import com.github.dto.BootDto;
 import com.github.service.UserService;
-import com.github.transactionManage.UserTransaction;
-import org.apache.catalina.User;
+import com.github.transaction.UserTransaction;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 

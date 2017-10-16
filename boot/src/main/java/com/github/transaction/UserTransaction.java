@@ -1,4 +1,4 @@
-package com.github.transactionManage;
+package com.github.transaction;
 
 import com.github.dao.UserMapper;
 import com.github.domain.UserDo;
@@ -12,7 +12,7 @@ import javax.annotation.Resource;
  * Created by chenqimiao on 2017/5/2.
  */
 @Component
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class UserTransaction {
     @Resource
     private UserMapper userMapper;

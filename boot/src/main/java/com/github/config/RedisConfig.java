@@ -56,7 +56,8 @@ public class RedisConfig implements EnvironmentAware {
 
         //或者JdkSerializationRedisSerializer序列化方式;
 
-        RedisSerializer<String> redisSerializer = new StringRedisSerializer();//Long类型不可以会出现异常信息;
+        //Long类型不可以会出现异常信息;
+        RedisSerializer<String> redisSerializer = new StringRedisSerializer();
 
         redisTemplate.setKeySerializer(redisSerializer);
 
